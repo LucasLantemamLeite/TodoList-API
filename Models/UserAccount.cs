@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace TodoList.Models;
 
 public class UserAccount
@@ -5,6 +7,7 @@ public class UserAccount
 
     public enum ERole { admin, user, guest };
 
+    [Key]
     public int Id { get; set; }
     public string Name { get; set; }
     public string Login { get; set; }
@@ -15,7 +18,7 @@ public class UserAccount
     public DateTime BirthDate { get; set; }
     public ERole Role { get; set; }
     public bool Active { get; set; } = true;
-    public DateTime CreatAt { get; set; } = DateTime.Now;
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
 
     public List<TaskItem> TaskItems { get; set; } = new();
 
