@@ -8,6 +8,6 @@ public partial class Configuration
     public static void BuilderConfig(WebApplicationBuilder builder)
     {
         builder.Services.AddDbContext<TodoListContext>();
+        builder.Services.AddControllers();
     }
-
 }
