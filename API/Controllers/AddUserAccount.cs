@@ -34,7 +34,5 @@ public class AddUser : ControllerBase
         {
             return StatusCode(500, new { Message = "Erro interno no servidor", Error = $"{e.InnerException?.Message ?? e.Message}" });
         }
-
-
     }
 }

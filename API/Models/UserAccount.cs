@@ -11,6 +11,7 @@ public class UserAccount
     public int Id { get; set; }
     public string Name { get; set; }
     public string Login { get; set; }
+    [Column("PasswordHash")]
     public string Password { get; set; }
     private string _email;
     public string Email { get => _email; set => _email = value.ToLower(); }

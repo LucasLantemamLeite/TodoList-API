@@ -6,7 +6,7 @@ namespace TodoList.Controller;
 [Route("v1/")]
 public class CheckAPI : ControllerBase
 {
-
+    [AllowAnonymous]
     [HttpGet("health-check")]
     public async Task<IActionResult> HealthCheck()
     {
