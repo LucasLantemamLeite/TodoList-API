@@ -14,6 +14,7 @@ public partial class Configuration
 
         if (builder.Environment.IsDevelopment())
         {
+            builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
         }
 
