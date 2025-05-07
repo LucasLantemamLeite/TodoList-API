@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TodoList.Data;
+using TodoList.Extension.Hash;
 using TodoList.Models;
 using TodoList.ModelView;
 using TodoList.Services.TokenService;
@@ -27,7 +28,7 @@ public class AddUser : ControllerBase
             {
                 Name = user_model.Name,
                 Login = user_model.Login,
-                Password = user_model.Password,
+                Password = GenPasswordHash.GenHashWithSalt(user_model.Password),
                 Email = user_model.Email,
                 PhoneNumber = user_model.PhoneNumber,
                 BirthDate = user_model.BirthDate

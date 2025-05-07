@@ -6,7 +6,7 @@ namespace TodoList.Models;
 public class UserAccount
 {
 
-    public enum ERole { guest, admin, user };
+    public enum ERole { Guest, Admin, User };
 
     [Key]
     public int Id { get; set; }

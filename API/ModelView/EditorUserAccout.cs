@@ -1,6 +1,6 @@
 namespace TodoList.ModelView;
 using System.ComponentModel.DataAnnotations;
-using static TodoList.Models.UserAccount;
+using Validation.ViewModel;
 
 public class UserAccountView
 {
@@ -18,16 +18,17 @@ public class UserAccountView
 
     [Required(ErrorMessage = "O campo de Email é obrigatório.")]
     [MaxLength(130, ErrorMessage = "O campo de Password deve ter menos de 100 caracteres.")]
-    [EmailAddress(ErrorMessage = "Não é um Email válido.")]
+    [EmailAddressDomain(ErrorMessage = "Não é um Email válido, verifique se o mesmo possui um ")]
     public string Email { get; set; }
 
     [Required(ErrorMessage = "O campo de PhoneNumber é obrigatório.")]
     [MaxLength(20, ErrorMessage = "O campo de PhoneNumber deve ter menos de 100 caracteres.")]
-    [Phone(ErrorMessage = "Não é um Número de Telefone  válido.")]
+    [Phone(ErrorMessage = "Não é um Número de Telefone válido.")]
     public string PhoneNumber { get; set; }
 
     [Required(ErrorMessage = "O campo de BirthDate é obrigatório.")]
     [DataType(DataType.Date, ErrorMessage = "Não é uma data válida.")]
+    [BirthDateLessThanToday(MinimumAge = 18, ErrorMessage = "A idade mínima é de 18 anos.")]
     public DateTime BirthDate { get; set; }
 
 }
