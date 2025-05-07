@@ -1,11 +1,12 @@
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace TodoList.Models;
 
 public class UserAccount
 {
 
-    public enum ERole { admin, user, guest };
+    public enum ERole { guest, admin, user };
 
     [Key]
     public int Id { get; set; }
@@ -17,7 +18,7 @@ public class UserAccount
     public string Email { get => _email; set => _email = value.ToLower(); }
     public string PhoneNumber { get; set; }
     public DateTime BirthDate { get; set; }
-    public ERole Role { get; set; }
+    public ERole Role { get; set; } = (ERole)2;
     public bool Active { get; set; } = true;
     public DateTime CreatedAt { get; set; } = DateTime.Now;
 

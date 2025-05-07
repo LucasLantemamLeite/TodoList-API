@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using TodoList.Models;
+using static TodoList.Models.UserAccount;
 
 namespace TodoList.Mapping;
 
@@ -48,6 +49,9 @@ public class UserAccountMap : IEntityTypeConfiguration<UserAccount>
         .HasColumnType("Nvarchar(20)")
         .IsRequired();
 
+        builder.HasIndex(x => x.PhoneNumber, "Unique_Key_PhoneNumber_UserAccount")
+        .IsUnique();
+
         builder.Property(x => x.BirthDate)
         .HasColumnName("BirthDate")
         .HasColumnType("Smalldatetime")
@@ -56,7 +60,8 @@ public class UserAccountMap : IEntityTypeConfiguration<UserAccount>
         builder.Property(x => x.Role)
         .HasColumnName("Role")
         .HasColumnType("Int")
-        .IsRequired();
+        .IsRequired()
+        .HasDefaultValue((ERole)2);
 
         builder.Property(x => x.Active)
         .HasColumnName("Active")
