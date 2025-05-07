@@ -8,6 +8,13 @@ public partial class Configuration
     {
         app.MapControllers();
         TokenKey.JwtKey = app.Configuration.GetValue<string>("JwtKey");
+
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseSwagger();
+            app.UseSwaggerUI();
+        }
+
         app.UseAuthorization();
         app.UseAuthorization();
     }

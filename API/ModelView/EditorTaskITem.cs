@@ -13,7 +13,7 @@ public class TaskItemView
     public string? Description { get; set; }
 
     [DataType(DataType.Date, ErrorMessage = "DeadLine não é uma data válida.")]
-    public DateTime? MyProperty { get; set; }
+    public DateTime? DeadLine { get; set; }
 
     [DataType(DataType.Date, ErrorMessage = "CompleteDate não é uma data válida.")]
     public DateTime? CompleteDate { get; set; }

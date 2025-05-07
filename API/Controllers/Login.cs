@@ -16,7 +16,7 @@ public class UserAccountLogin : ControllerBase
 {
 
     [AllowAnonymous]
-    [HttpGet("user")]
+    [HttpPost("user-login")]
     public async Task<IActionResult> Login([FromBody] LoginView login_model, [FromServices] TodoListContext context)
     {
 
@@ -29,8 +29,10 @@ public class UserAccountLogin : ControllerBase
             var userAccount = await context.UserAccounts.AsNoTracking().FirstOrDefaultAsync(x => x.Login == login_model.Login);
 
             if (userAccount == null)
-
                 return StatusCode(404, new { Message = "Credências incorretas", error = "[]" });
+
+            if (userAccount.Active == false)
+                return StatusCode(400, new { Message = "Esta conta foi desativada por um Administrador", error = "[]" });
 
             var tokenService = new TokenService();
             var token = tokenService.GenerateToken(userAccount);

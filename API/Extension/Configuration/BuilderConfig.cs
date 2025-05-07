@@ -11,6 +11,12 @@ public partial class Configuration
     public static void BuilderConfig(WebApplicationBuilder builder)
     {
         builder.Services.AddDbContext<TodoListContext>();
+
+        if (builder.Environment.IsDevelopment())
+        {
+            builder.Services.AddSwaggerGen();
+        }
+
         builder.Services.AddControllers().ConfigureApiBehaviorOptions(options =>
         {
             options.SuppressModelStateInvalidFilter = true;
@@ -30,5 +36,7 @@ public partial class Configuration
                 ValidateAudience = false
             };
         });
+
+
     }
 }
