@@ -23,7 +23,7 @@ namespace TodoListAPI.Migrations
                     Email = table.Column<string>(type: "Nvarchar(130)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "Nvarchar(20)", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "Smalldatetime", nullable: false),
-                    Role = table.Column<int>(type: "Int", nullable: false, defaultValue: 2),
+                    Role = table.Column<int>(type: "Int", nullable: false),
                     Active = table.Column<bool>(type: "Bit", nullable: false, defaultValue: true),
                     CreatedAt = table.Column<DateTime>(type: "Smalldatetime", nullable: false)
                 },

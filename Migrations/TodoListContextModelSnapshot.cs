@@ -118,9 +118,7 @@ namespace TodoListAPI.Migrations
                         .HasColumnName("PhoneNumber");
 
                     b.Property<int>("Role")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("Int")
-                        .HasDefaultValue(2)
                         .HasColumnName("Role");
 
                     b.HasKey("Id");

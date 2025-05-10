@@ -12,7 +12,7 @@ using TodoList.Data;
 namespace TodoListAPI.Migrations
 {
     [DbContext(typeof(TodoListContext))]
-    [Migration("20250510202952_v1")]
+    [Migration("20250510215825_v1")]
     partial class v1
     {
         /// <inheritdoc />
@@ -121,9 +121,7 @@ namespace TodoListAPI.Migrations
                         .HasColumnName("PhoneNumber");
 
                     b.Property<int>("Role")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("Int")
-                        .HasDefaultValue(2)
                         .HasColumnName("Role");
 
                     b.HasKey("Id");
