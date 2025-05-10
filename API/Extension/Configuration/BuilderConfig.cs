@@ -1,5 +1,6 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using TodoList.Data;
 using TodoList.Services.TokenKey;
@@ -10,7 +11,10 @@ public partial class Configuration
 {
     public static void BuilderConfig(WebApplicationBuilder builder)
     {
-        builder.Services.AddDbContext<TodoListContext>();
+        builder.Services.AddDbContext<TodoListContext>(options =>
+        {
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+        });
 
         if (builder.Environment.IsDevelopment())
         {
