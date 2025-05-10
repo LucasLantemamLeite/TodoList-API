@@ -26,6 +26,9 @@ jobs:
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
+      - name: Apply migrations to the database
+        run: dotnet ef database update
+
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
@@ -57,11 +60,6 @@ jobs:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_DABA13118C7248BA90FFC035BD5CFA66 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_FA5E952BC1454E21AF6F8F29F137BA27 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_1C84463D0BC041948BFBDBC2494C1943 }}
-
-      - name: Apply migrations to the database
-        run: |
-          # Certifique-se de que o comando é executado no diretório correto
-          dotnet ef database update --project ./MyProjectPath/MyProject.csproj --startup-project ./MyProjectPath/MyProject.csproj
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
