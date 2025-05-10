@@ -60,6 +60,7 @@ jobs:
 
       - name: Apply migrations to the database
         run: |
+          # Certifique-se de que o comando é executado no diretório correto
           dotnet ef database update --project ./MyProjectPath/MyProject.csproj --startup-project ./MyProjectPath/MyProject.csproj
 
       - name: Deploy to Azure Web App
