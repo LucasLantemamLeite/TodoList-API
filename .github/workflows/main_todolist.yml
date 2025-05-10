@@ -23,6 +23,13 @@ jobs:
         with:
           dotnet-version: "8.0"
 
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_DABA13118C7248BA90FFC035BD5CFA66 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_FA5E952BC1454E21AF6F8F29F137BA27 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_1C84463D0BC041948BFBDBC2494C1943 }}
+
       - name: Get Current IP Adress
         id: ip
         uses: haythem/public-ip@v1.2
