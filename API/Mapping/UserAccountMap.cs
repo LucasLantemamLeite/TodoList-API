@@ -60,8 +60,7 @@ public class UserAccountMap : IEntityTypeConfiguration<UserAccount>
         builder.Property(x => x.Role)
         .HasColumnName("Role")
         .HasColumnType("Int")
-        .IsRequired()
-        .HasDefaultValue((ERole)2);
+        .IsRequired();
 
         builder.Property(x => x.Active)
         .HasColumnName("Active")
