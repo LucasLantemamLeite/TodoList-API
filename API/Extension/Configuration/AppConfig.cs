@@ -15,7 +15,7 @@ public partial class Configuration
             app.UseSwaggerUI();
         }
 
-        app.UseAuthorization();
+        app.UseAuthentication();
         app.UseAuthorization();
     }
 }
